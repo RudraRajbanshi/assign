@@ -17,7 +17,7 @@ import url.Url;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
-    private Button btnLogin;
+    private Button btnLogin, btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,15 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = etPassword.getText().toString().trim();
 
         Call<LoginSignupResponse> usersCall = userAPI.checkUser(username,password);
+
         usersCall.enqueue(new Callback<LoginSignupResponse>() {
             @Override
             public void onResponse(Call<LoginSignupResponse> call, Response<LoginSignupResponse> response) {
@@ -51,8 +61,9 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }else {
                     if (response.body().isSuccess()){
+                        Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_LONG).show();
                         Url.Cookie = response.headers().get("Set-Cookie");
-                        Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                         startActivity(intent);
                         finish();
                     }
@@ -61,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginSignupResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this,"error",Toast.LENGTH_LONG).show();
+
             }
         });
     }

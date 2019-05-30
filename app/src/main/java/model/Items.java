@@ -1,8 +1,17 @@
 package model;
 
 public class Items {
-    private String itemName, itemImageName, itemDescription;
-    private float itemPrice;
+    private String itemName, image, itemDescription;
+    private String itemPrice;
+    private int image1;
+
+    public int getImage1() {
+        return image1;
+    }
+
+    public void setImage1(int image1) {
+        this.image1 = image1;
+    }
 
     public String getItemName() {
         return itemName;
@@ -12,12 +21,12 @@ public class Items {
         this.itemName = itemName;
     }
 
-    public String getItemImageName() {
-        return itemImageName;
+    public String getimage() {
+        return image;
     }
 
-    public void setItemImageName(String itemImageName) {
-        this.itemImageName = itemImageName;
+    public void setimage(String image) {
+        this.image = image;
     }
 
     public String getItemDescription() {
@@ -28,17 +37,17 @@ public class Items {
         this.itemDescription = itemDescription;
     }
 
-    public float getItemPrice() {
+    public String getItemPrice() {
         return itemPrice;
     }
 
-    public void setItemPrice(float itemPrice) {
+    public void setItemPrice(String itemPrice) {
         this.itemPrice = itemPrice;
     }
 
-    public Items(String itemName, String itemImageName, String itemDescription, float itemPrice) {
+    public Items(String itemName, String image, String itemDescription, String itemPrice) {
         this.itemName = itemName;
-        this.itemImageName = itemImageName;
+        this.image = image;
         this.itemDescription = itemDescription;
         this.itemPrice = itemPrice;
     }

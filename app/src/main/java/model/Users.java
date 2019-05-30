@@ -3,6 +3,29 @@ package model;
 public class Users {
     private String userFname, userLname, username, password;
 
+    private boolean success;
+    private String status;
+
+    public String getUserLname() {
+        return userLname;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Users(String userFname, String userLname, String username, String password) {
         this.userFname = userFname;
         this.userLname = userLname;
