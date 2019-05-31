@@ -24,7 +24,7 @@ public interface UserAPI {
     Call<Void> addHero(@Body Users users);
 
     @FormUrlEncoded
-    @POST("heroes")
+    @POST("items")
     Call<Void> addItems(@FieldMap Map<String,String> map);
 
     @FormUrlEncoded
@@ -35,6 +35,6 @@ public interface UserAPI {
     @POST("upload")
     Call<ImageResponse> uploadImage(@Part MultipartBody.Part img);
 
-    @GET("heroes")
+    @GET("items")
     Call<List<Items>> getAllItems();
 }
